@@ -1,78 +1,82 @@
-package com.example.recyclerview;
+package com.example.recyclerview.smt;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.recyclerview.Item;
+import com.example.recyclerview.R;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 //public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> implements Filterable {
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private static final String TAG = "RecyclerAdapter";
     Context mContext;
-    ArrayList<Item> itemList, itemsListAll;
+    ArrayList<Service> serviceList;
 
-    public RecyclerAdapter(Context mContext, ArrayList<Item> items) {
+    public RecyclerViewAdapter(Context mContext, ArrayList<Service> serviceList) {
         this.mContext = mContext;
-        this.itemList = items;
-        itemsListAll = new ArrayList<>(itemList);
+        this.serviceList = serviceList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
-        RecyclerAdapter.ViewHolder viewHolder = new RecyclerAdapter.ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_booking, parent, false);
+        RecyclerViewAdapter.ViewHolder viewHolder = new RecyclerViewAdapter.ViewHolder(view);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        Glide.with(mContext)
-                .asBitmap()
-                .load(itemList.get(position).getmImageUrl())
-                .into(holder.circleImageView);
-        holder.imageName.setText(itemList.get(position).getmImageName());
-        holder.imageName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked on:"+ itemList.get(position).getmImageName());
-                Toast.makeText(mContext, itemList.get(position).getmImageName(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        if(!serviceList.get(position).getUrl().isEmpty()){
+            Glide.with(mContext)
+                    .asBitmap()
+                    .load(serviceList.get(position).getUrl())
+                    .into(holder.circleImageView);
+        }
+        holder.textView1.setText(serviceList.get(position).getService());
+        holder.textView2.setText("₹"+serviceList.get(position).getRate());
+        holder.textView4.setText(serviceList.get(position).getCategory());
+        holder.textView5.setText(serviceList.get(position).getProvider());
+        holder.textView6.setText(serviceList.get(position).getRating());
+        holder.textView7.setText(serviceList.get(position).getDistance()+" KM Away");
     }
 
     @Override
     public int getItemCount() {
-        return itemList.size();
+        return serviceList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         CircleImageView circleImageView;
-        TextView imageName;
-        RelativeLayout parentLayout;
+        TextView textView1, textView2, textView4, textView5, textView6, textView7;
+        CardView parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             circleImageView = itemView.findViewById(R.id.image);
-            imageName = itemView.findViewById(R.id.image_name);
-            parentLayout = itemView.findViewById(R.id.parentLayout);
+            textView1 = itemView.findViewById(R.id.textView1);
+            textView2 = itemView.findViewById(R.id.textView2);
+            textView4 = itemView.findViewById(R.id.textView4);
+            textView5 = itemView.findViewById(R.id.textView5);
+            textView6 = itemView.findViewById(R.id.textView6);
+            textView7 = itemView.findViewById(R.id.textView7);
+            parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
 
@@ -115,8 +119,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 //    TODO: Below function is to be used while searching with editText
 //    There's no need of itemListAll in such case
 
-    public void filterList(ArrayList<Item> filteredList){
-        itemList = filteredList;
-        notifyDataSetChanged();
-    }
+//    public void filterList(ArrayList<Item> filteredList){
+//        itemList = filteredList;
+//        notifyDataSetChanged();
+//    }
 }
