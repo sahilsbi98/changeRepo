@@ -19,6 +19,7 @@ public class BookingActivity extends AppCompatActivity {
 
     RecyclerViewAdapter adapter;
     ArrayList<Service> serviceArrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,30 +31,30 @@ public class BookingActivity extends AppCompatActivity {
         initRecyclerView2();
     }
 
-    private void initData(){
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52",
-                "https://i.redd.it/tpsnoz5bzo501.jpg","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","" +
-                "https://seeklogo.com/images/S/salon-logo-573CEE0E3B-seeklogo.com.jpg","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
-        serviceArrayList.add(new Service("Hair Cut","120","Man","5","12.52","","SalonA"));
+    private void initData() {
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52",
+                "https://i.redd.it/tpsnoz5bzo501.jpg", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "" +
+                "https://seeklogo.com/images/S/salon-logo-573CEE0E3B-seeklogo.com.jpg", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
+        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
     }
 
-    private void initRecyclerView2(){
+    private void initRecyclerView2() {
         Log.d(TAG, "initRecyclerView: init RecyclerView");
         RecyclerView recyclerView = findViewById(R.id.recycler_view3);
-        adapter = new RecyclerViewAdapter(this,serviceArrayList);
+        adapter = new RecyclerViewAdapter(this, serviceArrayList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
