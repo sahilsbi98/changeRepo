@@ -32,8 +32,6 @@ public class BookingActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52",
-                "https://i.redd.it/tpsnoz5bzo501.jpg", "SalonA"));
         serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "" +
                 "https://seeklogo.com/images/S/salon-logo-573CEE0E3B-seeklogo.com.jpg", "SalonA"));
         serviceArrayList.add(new Service("Hair Cut", "120", "Man", "5", "12.52", "", "SalonA"));
